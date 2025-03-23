@@ -6,7 +6,9 @@
   "description": "A Simple Clock which uses the Wall Spark Engine",
   "scripts": {
     "dev": "npx tsx ./src/main.ts",
-    "build": "npx tsc",
+    "typecheck": "npm run build:shared && tsc --noEmit",
+    "build:shared": "cd ../shared && npm run build",
+    "build": "npm run build:shared && rm -rf dist && tsc",
     "preview": "node ./dist/main.js"
   },
   "dependencies": {
@@ -22,6 +24,6 @@
     "typescript": "^5.8.2"
   },
   "_moduleAliases": {
-  "@shared": "../shared/dist"
-}
+    "@shared": "../shared/dist"
+  }
 }

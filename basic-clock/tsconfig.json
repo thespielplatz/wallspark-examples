@@ -1,8 +1,10 @@
 {
+  "include": ["src"],
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["ES2022"],
     "module": "commonjs",
+    "baseUrl": ".", // This sets the base directory for resolving non-relative module imports
     "paths": {
       "@shared/*": ["../shared/src/*"]
     },
