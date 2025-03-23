@@ -1,9 +1,8 @@
+import { Config, GameEngine, Time } from '@thespielplatz/wall-spark-engine'
+
 // eslint-disable-next-line no-console
 console.info('Example - Clock armv6')
 
-import GameEngine from '@tsp/wse/GameEngine/GameEngine'
-import { Config } from '@tsp/wse/GameEngine/Config'
-import Time from '@tsp/wse/GameObjects/Animations/Time'
 
 let customConfigFile: string | undefined = undefined
 
