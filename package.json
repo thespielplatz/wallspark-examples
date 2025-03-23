@@ -1,0 +1,20 @@
+{
+  "name": "wallspark-examples",
+  "version": "1.0.0",
+  "description": "My personal projects with the wall [spark engine](https://github.com/thespielplatz/WallSparkEngine)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thespielplatz/wallspark-examples.git"
+  },
+  "keywords": [],
+  "author": "Philipp Horwath",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thespielplatz/wallspark-examples/issues"
+  },
+  "homepage": "https://github.com/thespielplatz/wallspark-examples#readme"
+}
