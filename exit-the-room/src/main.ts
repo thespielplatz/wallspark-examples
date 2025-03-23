@@ -1,20 +1,13 @@
 // eslint-disable-next-line no-console
 console.info('Exit the room')
 
+import 'module-alias/register'
 import { createApp, createRouter, defineEventHandler, getQuery, toNodeListener } from 'h3'
 import { createServer } from 'node:http'
 
-import GameEngine from '@tsp/wse/GameEngine/GameEngine'
-import { Config } from '@tsp/wse/GameEngine/Config'
 
 import { SceneSchema } from './sceneSchema'
-import Time from '@tsp/wse/GameObjects/Animations/Time'
-import Countdown from '@tsp/wse/GameObjects/Animations/Countdown'
-import Fill from '@tsp/wse/GameObjects/Drawing/Fill'
-import { BLACK } from '@tsp/wse/GameEngine/drawing/colors'
-import Blinker from '@tsp/wse/GameObjects/Animations/Blinker'
-import Text from '@tsp/wse/GameObjects/Drawing/Text'
-
+import { Config, GameEngine, Fill, Time, colors, Blinker, Countdown, Text } from '@thespielplatz/wall-spark-engine'
 
 let customConfigFile: string | undefined = undefined
 
@@ -28,7 +21,7 @@ const gameEngine = new GameEngine(config.config)
 const scene = SceneSchema.parse(config.config.scene)
 
 const backTime = new Fill({
-  color: BLACK,
+  color: colors.BLACK,
 })
 
 const time = new Time({
@@ -55,7 +48,7 @@ const countdown = new Countdown({
 })
 
 const textBackground = new Fill({
-  color: BLACK,
+  color: colors.BLACK,
   visible: false,
 })
 const text = new Text({

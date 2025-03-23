@@ -1,6 +1,5 @@
+import { Text } from '@thespielplatz/wall-spark-engine'
 import axios from 'axios'
-
-import Text from '@tsp/wse/GameObjects/Drawing/Text'
 
 export default class BlockTime extends Text {
   private timeIntervalInSeconds: number = 0

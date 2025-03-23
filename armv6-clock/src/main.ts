@@ -1,8 +1,8 @@
+import 'module-alias/register'
 import { Config, GameEngine, Time } from '@thespielplatz/wall-spark-engine'
 
 // eslint-disable-next-line no-console
 console.info('Example - Clock armv6')
-
 
 let customConfigFile: string | undefined = undefined
 

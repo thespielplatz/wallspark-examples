@@ -1,11 +1,12 @@
-// eslint-disable-next-line no-console
-console.info('Example - BlockClock')
+import 'module-alias/register'
+import { Config, GameEngine } from '@thespielplatz/wall-spark-engine'
 
-import GameEngine from '@tsp/wse/GameEngine/GameEngine'
-import { Config } from '@tsp/wse/GameEngine/Config'
+import { getLogo } from '@shared/logos/logo'
 
 import BlockTime from './GameObjects/BlockTime'
-import { getLogo } from '@shared/logos/logo'
+
+// eslint-disable-next-line no-console
+console.info('Example - BlockClock')
 
 const LOGO_PADDING = 1
 

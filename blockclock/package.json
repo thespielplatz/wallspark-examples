@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "npx tsx ./src/main.ts",
     "typecheck": "npm run build:shared && tsc --noEmit",
-    "build:shared": "tsc -p ../shared/tsconfig.json && tsc-alias -p ../shared/tsconfig.json",
-    "build": "npm run build:shared && tsc && tsc-alias",
+    "build:shared": "cd ../shared && npm run build",
+    "build": "npm run build:shared && rm -rf dist && tsc",
     "preview": "node ./dist/main.js"
   },
   "dependencies": {
