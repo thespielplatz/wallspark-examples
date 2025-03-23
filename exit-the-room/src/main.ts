@@ -5,7 +5,6 @@ import 'module-alias/register'
 import { createApp, createRouter, defineEventHandler, getQuery, toNodeListener } from 'h3'
 import { createServer } from 'node:http'
 
-
 import { SceneSchema } from './sceneSchema'
 import { Config, GameEngine, Fill, Time, colors, Blinker, Countdown, Text } from '@thespielplatz/wall-spark-engine'
 
