@@ -1,0 +1,25 @@
+{
+  "name": "example-basic-clock",
+  "version": "1.0.0",
+  "author": "Philipp Horwath",
+  "license": "MIT",
+  "description": "A Simple Clock which uses the Wall Spark Engine",
+  "scripts": {
+    "dev": "npx tsx ./src/main.ts",
+    "build:wse": "tsc -p ../../tsconfig.json && tsc-alias -p ../../tsconfig.json",
+    "build:shared": "tsc -p ../shared/tsconfig.json && tsc-alias -p ../shared/tsconfig.json",
+    "typecheck": "npm run build:wse && npm run build:shared && tsc --noEmit",
+    "build": "npm run build:wse && npm run build:shared && tsc && tsc-alias",
+    "main": "node dist/main.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "tsc-alias": "^1.8.11",
+    "tsx": "^4.19.1",
+    "typescript": "^5.4.2"
+  }
+}
