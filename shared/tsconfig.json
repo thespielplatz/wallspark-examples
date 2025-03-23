@@ -6,7 +6,6 @@
     "module": "commonjs",
     "baseUrl": ".", // This sets the base directory for resolving non-relative module imports
     "paths": {
-      "@tsp/wse/*": ["../../src/*"],
       "@shared/*": ["./src/*"]
     },
     "rootDir": "./src", /* Specify the root folder within your source files. */
