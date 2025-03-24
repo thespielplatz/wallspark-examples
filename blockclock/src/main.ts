@@ -2,6 +2,7 @@ import 'module-alias/register'
 import { Config, Fill, GameEngine, colors } from '@thespielplatz/wall-spark-engine'
 
 import { getLogo } from '@shared/logos/logo'
+import loadConfigFromMultipleSouces from '@shared/lib/loadConfigFromMultipleSources'
 
 import BlockTime from './GameObjects/BlockTime'
 
@@ -10,13 +11,8 @@ console.info('Example - BlockClock')
 
 const LOGO_PADDING = 1
 
-let customConfigFile: string | undefined = undefined
-
-if (process.argv.length > 2) {
-  customConfigFile = process.argv[2]
-}
-
-const config = new Config({ configFile: customConfigFile })
+const configFiles = ['config.json', '../config.json']
+const config = loadConfigFromMultipleSouces(configFiles)
 const gameEngine = new GameEngine(config.config)
 
 const blocktime = new BlockTime({

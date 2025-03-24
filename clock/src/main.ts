@@ -2,22 +2,23 @@
 console.info('Example - Clock')
 
 import 'module-alias/register'
-import { Config, GameEngine, GameEngineController, Time, Fill, colors } from '@thespielplatz/wall-spark-engine'
+import { GameEngine, GameEngineController, Time, Fill, colors } from '@thespielplatz/wall-spark-engine'
 import { CronJob, sendAt as cronSendAt } from 'cron'
 
 import { getLogo } from '@shared/logos/logo'
+import loadConfigFromMultipleSouces from '@shared/lib/loadConfigFromMultipleSources'
 
 import { SceneSchema } from './sceneSchema'
 
 const LOGO_PADDING = 1
 
-let customConfigFile: string | undefined = undefined
+const configFiles = ['config.json', '../config.json']
 
 if (process.argv.length > 2) {
-  customConfigFile = process.argv[2]
+  configFiles.unshift(process.argv[2])
 }
 
-const config = new Config({ configFile: customConfigFile })
+const config = loadConfigFromMultipleSouces(configFiles)
 const gameEngine = new GameEngine(config.config)
 
 const scene = SceneSchema.parse(config.config.scene)

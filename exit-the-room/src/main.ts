@@ -7,14 +7,15 @@ import { createServer } from 'node:http'
 
 import { SceneSchema } from './sceneSchema'
 import { Config, GameEngine, Fill, Time, colors, Blinker, Countdown, Text } from '@thespielplatz/wall-spark-engine'
+import loadConfigFromMultipleSouces from '@shared/lib/loadConfigFromMultipleSources'
 
-let customConfigFile: string | undefined = undefined
+const configFiles = ['config.json', '../config.json']
 
 if (process.argv.length > 2) {
-  customConfigFile = process.argv[2]
+  configFiles.unshift(process.argv[2])
 }
 
-const config = new Config({ configFile: customConfigFile })
+const config = loadConfigFromMultipleSouces(configFiles)
 const gameEngine = new GameEngine(config.config)
 
 const scene = SceneSchema.parse(config.config.scene)

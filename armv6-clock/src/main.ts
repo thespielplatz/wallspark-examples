@@ -1,12 +1,12 @@
 import 'module-alias/register'
 import { Config, GameEngine, Time, Fill, colors } from '@thespielplatz/wall-spark-engine'
+import loadConfigFromMultipleSouces from '@shared/lib/loadConfigFromMultipleSources'
 
 // eslint-disable-next-line no-console
 console.info('Example - Clock armv6')
 
-let customConfigFile: string | undefined = undefined
-
-const config = new Config({ configFile: customConfigFile })
+const configFiles = ['config.json', '../config.json']
+const config = loadConfigFromMultipleSouces(configFiles)
 const gameEngine = new GameEngine(config.config)
 
 gameEngine.addGameObject(new Fill({ color: colors.BLACK }))
