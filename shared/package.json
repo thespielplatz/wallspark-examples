@@ -5,7 +5,7 @@
   "license": "MIT",
   "description": "a shared recources project for wall spark engine examples",
   "scripts": {
-    "build": "rm tsconfig.tsbuildinfo && rm -rf dist && tsc && tsc-alias"
+    "build": "rm -f tsconfig.tsbuildinfo && rm -rf dist && tsc && tsc-alias"
   },
   "dependencies": {
     "@thespielplatz/wall-spark-engine": "^1.2.0",
