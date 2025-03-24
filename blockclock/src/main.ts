@@ -1,5 +1,5 @@
 import 'module-alias/register'
-import { Config, GameEngine } from '@thespielplatz/wall-spark-engine'
+import { Config, Fill, GameEngine, colors } from '@thespielplatz/wall-spark-engine'
 
 import { getLogo } from '@shared/logos/logo'
 
@@ -29,6 +29,7 @@ logoLeft.x = LOGO_PADDING
 const logoRight = getLogo('TheSpielplatz')
 logoRight.x = config.config.width - logoRight.width - LOGO_PADDING
 
+gameEngine.addGameObject(new Fill({ color: colors.BLACK }))
 gameEngine.addGameObject(logoLeft)
 gameEngine.addGameObject(logoRight)
 gameEngine.addGameObject(blocktime)

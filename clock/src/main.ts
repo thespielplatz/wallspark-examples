@@ -2,7 +2,7 @@
 console.info('Example - Clock')
 
 import 'module-alias/register'
-import { Config, GameEngine, GameEngineController, Time } from '@thespielplatz/wall-spark-engine'
+import { Config, GameEngine, GameEngineController, Time, Fill, colors } from '@thespielplatz/wall-spark-engine'
 import { CronJob, sendAt as cronSendAt } from 'cron'
 
 import { getLogo } from '@shared/logos/logo'
@@ -21,6 +21,8 @@ const config = new Config({ configFile: customConfigFile })
 const gameEngine = new GameEngine(config.config)
 
 const scene = SceneSchema.parse(config.config.scene)
+
+gameEngine.addGameObject(new Fill({ color: colors.BLACK }))
 
 if (scene.leftLogo) {
   const leftLogo = getLogo(scene.leftLogo)
