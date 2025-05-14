@@ -5,6 +5,8 @@ import { getLogo } from '@shared/logos/logo'
 import loadConfigFromMultipleSouces from '@shared/lib/loadConfigFromMultipleSources'
 
 import BlockTime from './GameObjects/BlockTime'
+import create from './server/create'
+import sbsDemo from './server/routes/sbs-demo'
 
 // eslint-disable-next-line no-console
 console.info('Example - BlockClock')
@@ -30,7 +32,14 @@ gameEngine.addGameObject(logoLeft)
 gameEngine.addGameObject(logoRight)
 gameEngine.addGameObject(blocktime)
 
+const { server, router } = create()
+sbsDemo(gameEngine, router)
+
 gameEngine.start()
 gameEngine.on(GameEngine.EVENT_STOPPED, () => {
-  process.exit(0)
+  server.close(() => {
+    console.info('Server stopped')
+    process.exit(0)
+  })
 })
+
