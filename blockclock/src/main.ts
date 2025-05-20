@@ -3,6 +3,7 @@ import { Config, Fill, GameEngine, colors } from '@thespielplatz/wall-spark-engi
 
 import { getLogo } from '@shared/logos/logo'
 import loadConfigFromMultipleSouces from '@shared/lib/loadConfigFromMultipleSources'
+import { FileLogger } from '@shared/lib/FileLogger'
 
 import BlockTime from './GameObjects/BlockTime'
 import create from './server/create'
@@ -10,6 +11,11 @@ import sbsDemo from './server/routes/sbs-demo'
 
 // eslint-disable-next-line no-console
 console.info('Example - BlockClock')
+
+const fileLogger = new FileLogger()
+fileLogger.log(`BlockClock started at ${new Date().toISOString()}`)
+fileLogger.writePing()
+fileLogger.setupExitHandlers()
 
 const LOGO_PADDING = 1
 
