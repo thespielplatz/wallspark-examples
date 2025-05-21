@@ -14,7 +14,7 @@ console.info('Example - BlockClock')
 
 const fileLogger = new FileLogger()
 fileLogger.log(`BlockClock started at ${new Date().toISOString()}`)
-fileLogger.writePing()
+fileLogger.writePing(10_000, true)
 fileLogger.setupExitHandlers()
 
 const LOGO_PADDING = 1

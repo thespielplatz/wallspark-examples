@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { execSync } from 'child_process'
 
 export class FileLogger {
   private readonly logPath: string
@@ -34,13 +35,23 @@ export class FileLogger {
     }
   }
 
-  public writePing(intervalMs: number = 10000) {
+  public writePing(intervalMs: number = 10000, raspberryPiStats: boolean = false): void {
     this.timer = setInterval(() => {
       const mem = process.memoryUsage()
       const format = (bytes: number) => `${(bytes / 1024 / 1024).toFixed(2)} MB`
 
       const memoryReport = `rss: ${format(mem.rss)}, heapUsed: ${format(mem.heapUsed)}, heapTotal: ${format(mem.heapTotal)}`
       this.log(`ping - ${memoryReport}`)
+      if (raspberryPiStats) {
+        try {
+          const cpuTemp = execSync('vcgencmd measure_temp').toString().trim()
+          const cpuLoad = execSync('vcgencmd measure_clock arm').toString().trim()
+          const throttled = execSync('vcgencmd get_throttled').toString().trim()
+          this.log(`Raspberry Pi Stats - cpuTemp: ${cpuTemp}, cpuLoad:${cpuLoad}, throttled:${throttled}`)
+        } catch (err) {
+          this.log(`Failed to get Raspberry Pi stats: ${err}`)
+        }
+      }
     }, intervalMs)
   }
 
