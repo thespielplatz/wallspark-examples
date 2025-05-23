@@ -30,6 +30,7 @@ export class FileLogger {
       const timestamp = this.getTimestamp()
       const entry = `[${timestamp}] ${message}\n`
       fs.appendFileSync(this.logPath, entry, { encoding: 'utf8', flag: 'a' })
+      fs.fsyncSync(fs.openSync(this.logPath, 'r+'))
     } catch (err) {
       console.error('Failed to write to log file:', err)
     }
